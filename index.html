@@ -125,10 +125,21 @@
 			    'num_results': max_results.MPSelect('value'),
 			};
 			MP.api.custom_query(script, params).done(function(results) {
+			  var add_commas = function(num) {
+            num = num.toString();
+            var new_string = '';
+            for (var i = 0; i < num.length; i++) {
+              new_string += num[i];
+              if (((i + 1) % 3 == num.length % 3)&&(i + 1 != num.length))
+                new_string += ',';
+            }
+            return new_string;
+        };
 				console.log(results);
 				var res = [];
 				if (results.length > 0) {
 					res = results[0].results;
+					res.count = add_commas(res.count);
 				}
 				res.unshift('');
 				delete res[0];
