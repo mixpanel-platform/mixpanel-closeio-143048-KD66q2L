@@ -84,7 +84,7 @@
 		  .reduce(theTop(params.num_results))
 		  .map(function(item) {
 		      _.each(item.results, function(summary) {
-		          summary.Percentage = Math.round(summary.value * 1000 / item.count) / 10;
+		          summary.Percentage = Math.round(summary.value * 10000 / item.count) / 100;
 		          summary['Event Name'] = summary.key[0];
 		          summary.Count = summary.value;
 		          delete summary.value;
